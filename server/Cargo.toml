@@ -1,0 +1,38 @@
+[package]
+name = "template-axum-solidjs-spa"
+authors = ["Rob Wagner <rob@sombia.com>"]
+license = ""
+repository = "https://github.com/robertwayne/template-axum-solidjs-spa"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+axum = { version = "0.6", features = ["http2", "headers"] }
+dotenvy = { version = "0.15" }
+serde = { version = "1", features = ["derive"], optional = true }
+serde_json = { version = "1" }
+sqlx = { version = "0.6", features = [
+    "runtime-tokio-rustls",
+    "postgres",
+    "time",
+    "ipnetwork",
+] }
+time = { version = "0.3" }
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+tower = { version = "0.4", default-features = false, features = ["util"] }
+tower-http = { version = "0.4", default-features = false, features = [
+    "fs",
+    "cors",
+    "compression-br",
+    "set-header",
+    "trace",
+] }
+tracing = { version = "0.1", default-features = false, features = ["std"] }
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[profile.release]
+opt-level = 3
+codegen-units = 1
+lto = true
+strip = true
