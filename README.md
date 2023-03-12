@@ -37,7 +37,7 @@
 ## Server Notes
 
 - Sets Cache Control headers for HTML, CSS, JS, WEBP, SVG, and WOFF2.
-- Uses tower-http CORS, Compression _(brotli)_, and CSP middleware.
+- Uses tower-http CORS, Compression _(gzip)_, and CSP middleware.
 
 ## GitHub Action Notes
 
@@ -51,3 +51,7 @@
 | Command | Action |
 |---------|--------|
 | ./update.sh | Updates the dependencies of both the client and server projects. |
+
+## Other Templates
+
+- __[Rocket + Svelte](https://github.com/robertwayne/template-rocket-svelte-spa)__
