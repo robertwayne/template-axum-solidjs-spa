@@ -9,7 +9,7 @@ export const Footer = (): JSX.Element => {
                     GitHub
                 </ExternalLink>
             </span>
-            <span>&copy; {new Date().getFullYear()} Rob Wagner</span>
+            <span>&copy; {new Date().getFullYear()} Name / Company</span>
         </footer>
     )
 }
