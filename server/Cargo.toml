@@ -15,8 +15,6 @@ serde_json = { version = "1" }
 sqlx = { version = "0.6", features = [
     "runtime-tokio-rustls",
     "postgres",
-    "time",
-    "ipnetwork",
 ] }
 time = { version = "0.3" }
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
@@ -24,7 +22,7 @@ tower = { version = "0.4", default-features = false, features = ["util"] }
 tower-http = { version = "0.4", default-features = false, features = [
     "fs",
     "cors",
-    "compression-br",
+    "compression-gzip",
     "set-header",
     "trace",
 ] }
