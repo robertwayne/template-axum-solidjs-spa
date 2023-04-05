@@ -53,7 +53,7 @@ const NavHeader = (): JSX.Element => {
     const HamburgerMenu = (): JSX.Element => {
         return (
             <div ref={hamburgerMenu} class={menuIsOpen() ? "" : "hidden"}>
-                <div class="absolute top-0 right-0 z-10 flex h-full w-full flex-col justify-center bg-light-primary bg-opacity-60 p-2 text-4xl font-bold backdrop-blur-xl dark:bg-dark-primary dark:bg-opacity-60">
+                <div class="absolute right-0 top-0 z-10 flex h-full w-full flex-col justify-center bg-light-primary bg-opacity-60 p-2 text-4xl font-bold backdrop-blur-xl dark:bg-dark-primary dark:bg-opacity-60">
                     <div class="flex items-center self-end">
                         <button
                             onClick={toggleTheme}
