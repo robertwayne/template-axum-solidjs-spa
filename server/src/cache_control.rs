@@ -27,7 +27,6 @@ pub async fn set_cache_header<B>(req: axum::http::Request<B>, next: Next<B>) -> 
         // As the only HTML file we serve is index.html, we can check for the
         // content type and set the Cache-Control header accordingly.
         if content_type == "text/html" {
-            println!("Setting no-cache header");
             response.headers_mut().insert(
                 CACHE_CONTROL,
                 HeaderValue::from_static("no-cache; max-age=0"),
