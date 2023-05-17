@@ -36,7 +36,9 @@
 
 ## Server Notes
 
-- Sets Cache Control headers for HTML, CSS, JS, WEBP, SVG, and WOFF2.
+- Sets reasonable Cache Control headers for HTML, CSS, JS, WEBP, SVG, and WOFF2
+  files. _Adjust this for your use case, though as cache-busting is built-in to
+  Vite by default via hashed filenames, you probably don't need to touch this._
 - Uses tower-http CORS, Compression _(gzip)_, and CSP middleware.
 
 ## GitHub Action Notes
