@@ -10,7 +10,7 @@ jobs:
       run:
         working-directory: ./client
     steps:
-      - uses: actions/checkout@v3.5.0
+      - uses: actions/checkout@v3.5.2
       - uses: actions/setup-node@v3
         with:
           node-version: 'latest'
