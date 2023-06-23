@@ -12,10 +12,7 @@ axum = { version = "0.6", features = ["http2", "headers"] }
 dotenvy = { version = "0.15" }
 serde = { version = "1", features = ["derive"], optional = true }
 serde_json = { version = "1" }
-sqlx = { version = "0.6", features = [
-    "runtime-tokio-rustls",
-    "postgres",
-] }
+sqlx = { version = "0.6", features = ["runtime-tokio-rustls", "postgres"] }
 time = { version = "0.3" }
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 tower = { version = "0.4", default-features = false, features = ["util"] }

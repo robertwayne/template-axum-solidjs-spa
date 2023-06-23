@@ -25,7 +25,7 @@
         "autoprefixer": "^10.4.14",
         "dotenv": "^16.3.1",
         "eslint": "^8.43.0",
-        "eslint-config-turbo": "^1.10.3",
+        "eslint-config-turbo": "^1.10.5",
         "happy-dom": "^9.20.3",
         "postcss": "^8.4.24",
         "postcss-load-config": "^4.0.1",
