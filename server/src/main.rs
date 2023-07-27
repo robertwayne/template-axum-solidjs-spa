@@ -80,7 +80,11 @@ async fn main() -> Result<()> {
                     CONTENT_SECURITY_POLICY,
                     HeaderValue::from_static("default-src 'self'; object-src 'none';"),
                 ))
-                .layer(CompressionLayer::new())
+                .layer(
+                    CompressionLayer::new()
+                        .quality(CompressionLevel::Precise(4))
+                        .compress_when(SizeAbove::new(512)),
+                )
                 .layer(TraceLayer::new_for_http())
                 .into_make_service(),
         )
