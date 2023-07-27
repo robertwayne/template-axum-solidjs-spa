@@ -15,11 +15,12 @@ use axum::{
 };
 use sqlx::PgPool;
 use tower_http::{
-    compression::CompressionLayer,
+    compression::{predicate::SizeAbove, CompressionLayer},
     cors::CorsLayer,
     services::{ServeDir, ServeFile},
     set_header::SetResponseHeaderLayer,
     trace::TraceLayer,
+    CompressionLevel,
 };
 use tracing_subscriber::EnvFilter;
 
