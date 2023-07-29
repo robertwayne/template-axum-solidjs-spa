@@ -2,7 +2,7 @@
 
 mod cache_control;
 
-use std::{net::SocketAddr, time::Duration};
+use std::{net::SocketAddr, sync::Arc, time::Duration};
 
 use axum::{
     http::{
@@ -26,6 +26,8 @@ use tracing_subscriber::EnvFilter;
 
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
+pub type SharedState = Arc<AppState>;
+
 #[derive(Clone)]
 pub struct AppState {
     db: PgPool,
@@ -46,11 +48,11 @@ async fn main() -> Result<()> {
         }))
         .await?;
 
-    let state = AppState { db };
+    let state = Arc::new(AppState { db });
     let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
 
     let router = Router::new()
-        .nest("/api", api_handler(state.clone()))
+        .nest("/api", api_handler(Arc::clone(&state)))
         .merge(static_file_handler());
 
     tracing::debug!("listening on {}", addr);
@@ -105,7 +107,7 @@ fn static_file_handler() -> Router {
         .layer(middleware::from_fn(cache_control::set_cache_header))
 }
 
-fn api_handler(state: AppState) -> Router {
+fn api_handler(state: SharedState) -> Router {
     Router::new()
         .route("/health", get(|| async { (StatusCode::OK, "OK") }))
         .with_state(state)
