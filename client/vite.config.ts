@@ -12,6 +12,14 @@ export default defineConfig({
         outDir: "dist",
         assetsDir: "assets",
         emptyOutDir: true,
+        minify: "terser",
+        // Disables asset inlining.
+        assetsInlineLimit: 0,
+        terserOptions: {
+            format: {
+                comments: false,
+            },
+        },
     },
     server: {
         host: "127.0.0.1",
