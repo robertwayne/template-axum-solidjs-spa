@@ -1,8 +1,7 @@
 html,
-body {
-    color-scheme: dark light;
-    height: 100%;
-    min-height: 100svh;
+body,
+#app {
+    height: 100svh;
 }
 
 @tailwind base;

@@ -10,7 +10,7 @@ export const App = () => {
     const NotFound = lazy(() => import("./routes/NotFound"))
 
     return (
-        <div class="flex w-full max-w-screen-2xl flex-col bg-light-primary text-light-secondary transition dark:bg-dark-primary dark:text-dark-secondary">
+        <div class="flex w-full h-full max-w-screen-2xl flex-col bg-light-primary text-light-secondary transition dark:bg-dark-primary dark:text-dark-secondary">
             <NavHeader />
 
             <main class="flex h-full w-full grow flex-col items-center p-4">
