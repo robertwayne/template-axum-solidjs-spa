@@ -10,14 +10,17 @@
             content="Full-stack SPA template using SolidJS, TypeScript, and Tailwind. Backed by Rust with Axum and PostgreSQL. "
         />
 
-        <title>Template: Axum + SolidJS</title>
+        <script>
+            // We inline an initial theme check to prevent a FOUC.
+            document.documentElement.style.background =
+                localStorage.getItem("theme") === "dark" ? "#222831" : "#f8f9fa"
+        </script>
+
+        <title>Template: Axum / SolidJS</title>
     </head>
     <body>
         <noscript>JavaScript must be enabled to view this website.</noscript>
-        <div
-            id="app"
-            class="flex justify-center bg-light-primary text-light-secondary transition dark:bg-dark-primary dark:text-dark-secondary h-full"
-        ></div>
+        <div id="app" />
         <script type="module" src="./src/index.tsx"></script>
     </body>
 </html>
