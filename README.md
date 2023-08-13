@@ -1,4 +1,4 @@
-# Template: Axum + SolidJS SPA
+# Template: Axum / SolidJS SPA
 
 ## Backend
 
@@ -57,4 +57,4 @@
 
 ## Other Templates
 
-- __[Rocket + Svelte](https://github.com/robertwayne/template-rocket-svelte-spa)__
+- __[Rocket / Svelte](https://github.com/robertwayne/template-rocket-svelte-spa)__
