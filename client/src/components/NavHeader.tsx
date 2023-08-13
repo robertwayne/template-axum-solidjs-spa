@@ -54,29 +54,29 @@ const NavHeader = (): JSX.Element => {
         return (
             <div ref={hamburgerMenu} class={menuIsOpen() ? "" : "hidden"}>
                 <div class="absolute right-0 top-0 z-10 flex h-full w-full flex-col justify-center bg-light-primary bg-opacity-60 p-2 text-4xl font-bold backdrop-blur-xl dark:bg-dark-primary dark:bg-opacity-60">
-                    <div class="flex items-center self-end">
+                    <div class="flex items-center justify-between">
                         <button
                             onClick={toggleTheme}
-                            class="ml-4 flex h-[48px] w-[48px] self-end border-none bg-transparent"
+                            class="flex h-[48px] w-[48px] border-none bg-transparent"
                         >
                             <img
                                 src={isDark() ? lightModeIcon : darkModeIcon}
-                                alt="change theme icon"
-                                width="36"
-                                height="36"
+                                alt="change theme"
+                                width="40px"
+                                height="40px"
                                 class="flex self-center"
                             />
                         </button>
 
                         <button
                             onClick={toggleHamburgerMenu}
-                            class="ml-4 flex self-end border-none bg-transparent"
+                            class="flex self-end border-none bg-transparent"
                         >
                             <img
                                 src={closeMenuIcon}
-                                alt="close menu button"
-                                width="48"
-                                height="48"
+                                alt="close menu"
+                                width="44px"
+                                height="44px"
                                 class={isDark() ? "invert" : ""}
                             />
                         </button>
@@ -115,13 +115,13 @@ const NavHeader = (): JSX.Element => {
                     )
                 })}
 
-                <li>
+                <li class="flex justify-center items-center">
                     <button onClick={toggleTheme} class="ml-4 flex border-none">
                         <img
                             src={isDark() ? lightModeIcon : darkModeIcon}
-                            alt="change theme icon"
-                            width="24"
-                            height="24"
+                            alt="change theme"
+                            width="32px"
+                            height="32px"
                         />
                     </button>
                 </li>
@@ -143,9 +143,9 @@ const NavHeader = (): JSX.Element => {
                 >
                     <img
                         src={menuIcon}
-                        width="48"
-                        height="48"
-                        alt="open menu button"
+                        width="44px"
+                        height="44px"
+                        alt="open menu"
                         class={isDark() ? "invert" : "invert-0"}
                     />
                 </button>
