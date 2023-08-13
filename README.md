@@ -36,11 +36,9 @@
 
 ## Server Notes
 
-- Sets reasonable Cache Control headers for HTML, CSS, JS, WEBP, SVG, and WOFF2
-  files. _Adjust this for your use case, though as cache-busting is built-in to
-  Vite by default via hashed filenames, you probably don't need to touch this
-  except to add more MIME types._
-- Uses tower-http CORS, Compression _(brotli)_, and CSP middleware.
+- Sets default Cache-Control headers via
+  __[axum-cc](https://github.com/robertwayne/axum-cc)__ middleware.
+- Uses tower-http CORS and Compression _(brotli)_ middleware.
 
 ## GitHub Action Notes
 
