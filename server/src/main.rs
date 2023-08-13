@@ -1,7 +1,5 @@
 #![forbid(unsafe_code)]
 
-mod cache_control;
-
 use std::{net::SocketAddr, sync::Arc, time::Duration};
 
 use axum::{
@@ -13,6 +11,7 @@ use axum::{
     routing::get,
     Router,
 };
+use axum_cc::CacheControlLayer;
 use sqlx::PgPool;
 use tower_http::{
     compression::{predicate::SizeAbove, CompressionLayer},
@@ -97,14 +96,13 @@ async fn main() -> Result<()> {
 }
 
 fn static_file_handler() -> Router {
-    // Static assets served from this router will be cached.
     Router::new()
         .nest_service(
             "/",
             ServeDir::new("../client/dist")
                 .not_found_service(ServeFile::new("../client/dist/index.html")),
         )
-        .layer(middleware::from_fn(cache_control::set_cache_header))
+        .layer(CacheControlLayer::new())
 }
 
 fn api_handler(state: SharedState) -> Router {
