@@ -4,7 +4,7 @@ use std::{net::SocketAddr, sync::Arc, time::Duration};
 
 use axum::{
     http::{
-        header::{ACCEPT, CONTENT_SECURITY_POLICY, CONTENT_TYPE},
+        header::{ACCEPT, CONTENT_TYPE},
         HeaderValue, Method, StatusCode,
     },
     middleware,
@@ -17,7 +17,6 @@ use tower_http::{
     compression::{predicate::SizeAbove, CompressionLayer},
     cors::CorsLayer,
     services::{ServeDir, ServeFile},
-    set_header::SetResponseHeaderLayer,
     trace::TraceLayer,
     CompressionLevel,
 };
@@ -78,10 +77,6 @@ async fn main() -> Result<()> {
                             Method::PATCH,
                         ]),
                 )
-                .layer(SetResponseHeaderLayer::if_not_present(
-                    CONTENT_SECURITY_POLICY,
-                    HeaderValue::from_static("default-src 'self'; object-src 'none';"),
-                ))
                 .layer(
                     CompressionLayer::new()
                         .quality(CompressionLevel::Precise(4))
