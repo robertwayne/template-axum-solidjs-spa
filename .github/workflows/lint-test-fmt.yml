@@ -10,8 +10,8 @@ jobs:
       run:
         working-directory: ./client
     steps:
-      - uses: actions/checkout@v4.1.0
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4.1.1
+      - uses: actions/setup-node@v4
         with:
           node-version: 'latest'
           cache: 'npm'
