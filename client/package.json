@@ -28,7 +28,7 @@
         "eslint-config-turbo": "^1.10.16",
         "happy-dom": "^12.10.3",
         "postcss": "^8.4.31",
-        "postcss-load-config": "^4.0.2",
+        "postcss-load-config": "^5.0.2",
         "prettier": "^3.1.0",
         "prettier-plugin-tailwindcss": "^0.5.7",
         "solid-js": "^1.8.6",
