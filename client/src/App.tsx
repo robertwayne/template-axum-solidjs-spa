@@ -10,7 +10,7 @@ export const App = (props: ParentProps) => {
             <NavHeader />
 
             <main class="flex h-full w-full grow flex-col items-center p-4">
-                {props.children}
+                { props.children }
             </main>
 
             <Footer />
