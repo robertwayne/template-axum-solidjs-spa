@@ -19,23 +19,23 @@
         "test:watch": "vitest"
     },
     "dependencies": {
-        "@solidjs/router": "^0.10.9",
-        "@typescript-eslint/eslint-plugin": "^6.19.0",
-        "@typescript-eslint/parser": "^6.19.0",
+        "@solidjs/router": "^0.10.10",
+        "@typescript-eslint/eslint-plugin": "^6.20.0",
+        "@typescript-eslint/parser": "^6.20.0",
         "autoprefixer": "^10.4.17",
-        "dotenv": "^16.3.1",
+        "dotenv": "^16.4.1",
         "eslint": "^8.56.0",
         "eslint-config-turbo": "^1.11.3",
-        "happy-dom": "^13.2.0",
+        "happy-dom": "^13.3.5",
         "postcss": "^8.4.33",
         "postcss-load-config": "^5.0.2",
         "prettier": "^3.2.4",
         "prettier-plugin-tailwindcss": "^0.5.11",
-        "solid-js": "^1.8.11",
+        "solid-js": "^1.8.12",
         "tailwindcss": "^3.4.1",
         "typescript": "^5.3.3",
-        "vite": "5.0.11",
-        "vite-plugin-solid": "^2.8.2",
-        "vitest": "^1.2.1"
+        "vite": "5.0.12",
+        "vite-plugin-solid": "^2.9.1",
+        "vitest": "^1.2.2"
     }
 }
