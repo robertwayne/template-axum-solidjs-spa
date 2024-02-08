@@ -36,8 +36,7 @@
 
 ## Server Notes
 
-- Sets default Cache-Control headers via
-  __[axum-cc](https://github.com/robertwayne/axum-cc)__ middleware.
+- Sets default Cache-Control headers via a middleware function.
 - Uses tower-http CORS and Compression _(brotli)_ middleware.
 
 ## GitHub Action Notes
