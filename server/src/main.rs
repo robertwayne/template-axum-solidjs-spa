@@ -3,15 +3,16 @@
 use std::{net::SocketAddr, sync::Arc, time::Duration};
 
 use axum::{
+    extract::Request,
     http::{
         header::{ACCEPT, CONTENT_TYPE},
-        HeaderValue, Method, StatusCode,
+        request, HeaderValue, Method, StatusCode,
     },
-    middleware,
+    middleware::{self, Next},
+    response::Response,
     routing::get,
     Router,
 };
-use axum_cc::CacheControlLayer;
 use sqlx::PgPool;
 use tower_http::{
     compression::{predicate::SizeAbove, CompressionLayer},
@@ -99,11 +100,36 @@ fn static_file_handler() -> Router {
             ServeDir::new("../client/dist")
                 .not_found_service(ServeFile::new("../client/dist/index.html")),
         )
-        .layer(CacheControlLayer::new())
+        .layer(middleware::from_fn(cache_control))
 }
 
 fn api_handler(state: SharedState) -> Router {
     Router::new()
         .route("/health", get(|| async { (StatusCode::OK, "OK") }))
         .with_state(state)
+}
+
+async fn cache_control(request: Request, next: Next) -> Response {
+    let mut response = next.run(request).await;
+
+    if let Some(content_type) = response.headers().get(CONTENT_TYPE) {
+        const CACHEABLE_CONTENT_TYPES: [&str; 6] = [
+            "text/css",
+            "application/javascript",
+            "image/svg+xml",
+            "image/webp",
+            "font/woff2",
+            "image/png",
+        ];
+
+        if CACHEABLE_CONTENT_TYPES.iter().any(|&ct| content_type == ct) {
+            let value = format!("public, max-age={}", 60 * 60 * 24);
+
+            if let Ok(value) = HeaderValue::from_str(&value) {
+                response.headers_mut().insert("cache-control", value);
+            }
+        }
+    }
+
+    response
 }

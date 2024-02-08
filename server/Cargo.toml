@@ -9,7 +9,6 @@ publish = false
 
 [dependencies]
 axum = { version = "0.7" }
-axum-cc = { git = "https://github.com/robertwayne/axum-cc", branch = "main" }
 dotenvy = { version = "0.15" }
 serde = { version = "1", features = ["derive"], optional = true }
 serde_json = { version = "1" }
