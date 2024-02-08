@@ -1,19 +1,14 @@
-# Directories
-.cargo
-.turbo
-assets
-build
-dist
-node_modules
-public
-target
-
-# Files
+.cargo/
 .env
 .log
-Cargo.lock
-pnpm-lock.yaml
-
-# User Settings
-.idea
 .vscode
+assets/
+build/
+bun.lockb
+Cargo.lock
+data/
+dist/
+node_modules/
+pnpm-lock.yaml
+public/
+target/

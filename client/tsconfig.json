@@ -28,8 +28,7 @@
         "declaration": true,
         "resolveJsonModule": true,
         "skipLibCheck": true,
-        "pretty": true,
-        "types": ["vitest/importMeta", "vite/client"]
+        "pretty": true
     },
     "include": ["src/**/*", "*.d.ts"],
     "exclude": ["node_modules"]

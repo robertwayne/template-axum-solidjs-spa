@@ -11,9 +11,7 @@
 - __[Solid Router](https://github.com/solidjs/solid-router)__
 - __[TypeScript](https://www.typescriptlang.org)__
 - __[Tailwind CSS](https://tailwindcss.com)__
-- __[Vite](https://vitejs.dev/)__ + __[Vitest](https://vitest.dev/)__
-- __[Turbo](https://github.com/vercel/turbo)__
-
+- __[Bun](https://bun.sh/) & [Vite](https://vitejs.dev/)__
 ## Getting Started
 
 - Clone the repository: `git clone
@@ -32,26 +30,14 @@
 - Async, naive prefetching for route links.
 - Light/Dark mode themes built-in.
 - Responsive navigation menu built-in.
-- Scripts use __[pnpm](https://github.com/pnpm/pnpm)__.
 
 ## Server Notes
 
 - Sets default Cache-Control headers via a middleware function.
 - Uses tower-http CORS and Compression _(brotli)_ middleware.
 
-## GitHub Action Notes
-
-- Runs _(client)_ tests, eslint, tsc, and prettier on PRs.
-- Runs dependabot weekly. You can manually run `combine` to squish all
-  dependabot PRs into one PR.
-- Server tests/formatting are not run on PR _(yet)_.
-
 ## Additional Scripts
 
 | Command | Action |
 |---------|--------|
 | ./update.sh | Updates the dependencies of both the client and server projects. |
-
-## Other Templates
-
-- __[Rocket / Svelte](https://github.com/robertwayne/template-rocket-svelte-spa)__

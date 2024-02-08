@@ -34,5 +34,4 @@ module.exports = {
     ],
     rules: {},
     settings: {},
-    extends: ["turbo"],
 }

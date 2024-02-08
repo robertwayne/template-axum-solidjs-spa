@@ -29,6 +29,6 @@ if (app) {
                 <Route path="*" component={NotFound} />
             </Router>
         ),
-        app
+        app,
     )
 }
