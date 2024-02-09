@@ -18,8 +18,9 @@
    https://github.com/robertwayne/template-axum-solidjs-spa`
 - Change `.env.TEMPLATE` to `.env` and set your Postgres credentials _(if not
    using defaults)_.
-- Build the client with `pnpm run build` from inside the `/client` directory.
-   _Alternatively, you can use `pnpm run dev` to run the client with vite dev
+- Install your dependencies with `bun i`.
+- Build the client with `bun run build` from inside the `/client` directory.
+   _Alternatively, you can use `bun run dev` to run the client with the vite dev
    server._
 - Run the server with `cargo run` from inside the `/server` directory.
   - If you're serving from axum, visit `http://127.0.0.1:3000`.
