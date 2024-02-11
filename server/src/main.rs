@@ -115,7 +115,7 @@ async fn cache_control(request: Request, next: Next) -> Response {
     if let Some(content_type) = response.headers().get(CONTENT_TYPE) {
         const CACHEABLE_CONTENT_TYPES: [&str; 6] = [
             "text/css",
-            "application/javascript",
+            "text/javascript",
             "image/svg+xml",
             "image/webp",
             "font/woff2",
