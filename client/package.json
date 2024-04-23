@@ -16,21 +16,21 @@
         "tsc:watch": "tsc --noEmit --watch"
     },
     "dependencies": {
-        "@types/bun": "^1.0.12",
-        "@solidjs/router": "^0.13.1",
-        "@typescript-eslint/eslint-plugin": "^7.5.0",
-        "@typescript-eslint/parser": "^7.5.0",
+        "@types/bun": "^1.1.0",
+        "@solidjs/router": "^0.13.2",
+        "@typescript-eslint/eslint-plugin": "^7.7.1",
+        "@typescript-eslint/parser": "^7.7.1",
         "autoprefixer": "^10.4.19",
         "dotenv": "^16.4.5",
-        "eslint": "^9.0.0",
+        "eslint": "^9.1.1",
         "postcss": "^8.4.38",
         "postcss-load-config": "^5.0.3",
         "prettier": "^3.2.5",
-        "prettier-plugin-tailwindcss": "^0.5.13",
-        "solid-js": "^1.8.16",
+        "prettier-plugin-tailwindcss": "^0.5.14",
+        "solid-js": "^1.8.17",
         "tailwindcss": "^3.4.3",
-        "typescript": "^5.4.4",
-        "vite": "5.2.8",
+        "typescript": "^5.4.5",
+        "vite": "5.2.10",
         "vite-plugin-solid": "^2.10.2"
     }
 }
