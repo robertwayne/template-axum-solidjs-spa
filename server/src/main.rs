@@ -6,7 +6,7 @@ use axum::{
     extract::Request,
     http::{
         header::{ACCEPT, CONTENT_TYPE},
-        request, HeaderValue, Method, StatusCode,
+        HeaderValue, Method, StatusCode,
     },
     middleware::{self, Next},
     response::Response,
@@ -29,7 +29,7 @@ pub type SharedState = Arc<AppState>;
 
 #[derive(Clone)]
 pub struct AppState {
-    db: PgPool,
+    _db: PgPool,
 }
 
 #[tokio::main]
@@ -41,13 +41,13 @@ async fn main() -> Result<()> {
         .with_env_filter(EnvFilter::from_default_env())
         .init();
 
-    let db =
+    let _db =
         PgPool::connect(&std::env::var("DATABASE_URL").unwrap_or_else(|_| {
             "postgres://postgres:postgres@localhost:5432/postgres".to_string()
         }))
         .await?;
 
-    let state = Arc::new(AppState { db });
+    let state = Arc::new(AppState { _db });
     let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
 
     let router = Router::new()
