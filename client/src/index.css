@@ -1,9 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+    --color-light-primary: #f8f9fa;
+    --color-light-secondary: #272727;
+    --color-light-highlight: #3f5ab1;
+    --color-dark-primary: #222831;
+    --color-dark-secondary: #dddbd8;
+    --color-dark-highlight: #ffc857;
+}
+
+[data-theme="light"] {
+    --primary: var(--color-light-primary);
+    --secondary: var(--color-light-secondary);
+    --highlight: var(--color-light-highlight);
+}
+
+[data-theme="dark"] {
+    --primary: var(--color-dark-primary);
+    --secondary: var(--color-dark-secondary);
+    --highlight: var(--color-dark-highlight);
+}
+
 html,
 body,
 #app {
     height: 100svh;
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;

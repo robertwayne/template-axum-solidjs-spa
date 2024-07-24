@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,14 +10,36 @@
             content="Full-stack SPA template using SolidJS, TypeScript, and Tailwind. Backed by Rust with Axum and PostgreSQL. "
         />
 
+        <link rel="preload" href="/assets/moon.svg" as="image" />
+        <link rel="preload" href="/assets/sun.svg" as="image" />
+
+        <style>
+            /* Inline critical CSS to prevent FOUC */
+            [data-theme='light'] {
+                background-color: #f8f9fa;
+                text: #3f5ab1;
+            }
+            [data-theme='dark'] {
+                background-color: #222831;
+                text: #272727;
+            }
+        </style>
+
         <script>
             // We inline an initial theme check to prevent a FOUC.
-            document.documentElement.style.background =
-                localStorage.getItem("theme") === "dark" ? "#222831" : "#f8f9fa"
+            const theme = localStorage.getItem("theme")
+
+            if (theme) {
+                document.documentElement.setAttribute("data-theme", theme)
+            } else {
+                const prefersLight = window.matchMedia("(prefers-color-scheme: light)")
+                document.documentElement.setAttribute("data-theme", prefersLight.matches ? "light" : "dark")
+            }
         </script>
 
         <title>Template: Axum / SolidJS</title>
     </head>
+    
     <body>
         <noscript>JavaScript must be enabled to view this website.</noscript>
         <div id="app" />

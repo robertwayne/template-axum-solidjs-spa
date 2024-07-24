@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
-        "target": "esnext",
-        "module": "esnext",
-        "moduleResolution": "node",
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
         "lib": ["ESNext", "DOM", "Dom.Iterable"],
         "rootDir": "src",
         "outDir": "dist",
@@ -20,8 +20,10 @@
         "noImplicitReturns": true,
         "noImplicitThis": true,
         "noFallthroughCasesInSwitch": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
+
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+
         "emitDecoratorMetadata": false,
         "experimentalDecorators": true,
         "downlevelIteration": false,
