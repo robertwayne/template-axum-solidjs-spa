@@ -13,6 +13,7 @@ use axum::{
     routing::get,
     Router,
 };
+use mimalloc::MiMalloc;
 use sqlx::PgPool;
 use tower_http::{
     compression::{predicate::SizeAbove, CompressionLayer},
@@ -31,6 +32,9 @@ pub type SharedState = Arc<AppState>;
 pub struct AppState {
     _db: PgPool,
 }
+
+#[global_allocator]
+static GLOBAL: MiMalloc = MiMalloc;
 
 #[tokio::main]
 async fn main() -> Result<()> {
