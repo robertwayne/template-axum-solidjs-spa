@@ -1,0 +1,51 @@
+name: CI
+
+env:
+    CARGO_TERM_COLOR: always
+
+on:
+    push:
+        branches:
+            - main
+    pull_request: {}
+
+jobs:
+    check-rust:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: server
+        steps:
+            - uses: actions/checkout@v4
+            - uses: dtolnay/rust-toolchain@nightly
+              with:
+                  components: clippy, rustfmt
+            - uses: Swatinem/rust-cache@v2
+            
+            - name: clippy
+              run: cargo clippy --workspace --all-targets --all-features -- -D warnings
+
+            - name: rustfmt
+              run: cargo fmt --all --check
+
+    check-typescript:
+        needs: check-rust
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: client
+        steps:
+            - uses: actions/checkout@v4
+            - uses: oven-sh/setup-bun@v1
+
+            - name: install
+              run: bun i
+
+            - name: eslint
+              run: bun lint
+
+            - name: tsc 
+              run: bun tsc
+
+            - name: fmt
+              run: bun fmt:check
