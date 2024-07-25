@@ -23,7 +23,7 @@
     "@typescript-eslint/eslint-plugin": "^7.17.0",
     "@typescript-eslint/parser": "^7.17.0",
     "prettier": "^3.3.3",
-    "solid-js": "^1.8.18",
+    "solid-js": "^1.8.19",
     "tailwindcss": "^4.0.0-alpha.17",
     "typescript": "^5.5.4",
     "vite": "5.3.4",
