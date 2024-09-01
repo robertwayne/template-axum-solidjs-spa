@@ -1,28 +1,28 @@
 {
-  "name": "template-axum-solidjs-spa",
-  "version": "0.1.0",
-  "repository": "https://github.com/robertwayne/template-axum-solidjs-spa",
-  "author": "Rob Wagner <rob@sombia.com>",
-  "license": "",
-  "type": "module",
-  "private": true,
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "fmt": "prettier --config .prettierrc --write  \"**/*.{ts,js,tsx,jsx}\"",
-    "fmt:check": "prettier --config .prettierrc --check  \"**/*.{ts,js,tsx,jsx}\"",
-    "tsc": "tsc --noEmit",
-    "tsc:watch": "tsc --noEmit --watch"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.0.0-alpha.19",
-    "@solidjs/router": "^0.14.3",
-    "@types/bun": "^1.1.6",
-    "prettier": "^3.3.3",
-    "solid-js": "^1.8.21",
-    "tailwindcss": "^4.0.0-alpha.19",
-    "typescript": "^5.5.4",
-    "vite": "5.4.1",
-    "vite-plugin-solid": "^2.10.2"
-  }
+    "name": "template-axum-solidjs-spa",
+    "version": "0.1.0",
+    "repository": "https://github.com/robertwayne/template-axum-solidjs-spa",
+    "author": "Rob Wagner <rob@sombia.com>",
+    "license": "",
+    "type": "module",
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "fmt": "prettier --config .prettierrc --write  \"**/*.{ts,js,tsx,jsx}\"",
+        "fmt:check": "prettier --config .prettierrc --check  \"**/*.{ts,js,tsx,jsx}\"",
+        "tsc": "tsc --noEmit",
+        "tsc:watch": "tsc --noEmit --watch"
+    },
+    "dependencies": {
+        "@tailwindcss/vite": "^4.0.0-alpha.20",
+        "@solidjs/router": "^0.14.3",
+        "@types/bun": "^1.1.8",
+        "prettier": "^3.3.3",
+        "solid-js": "^1.8.22",
+        "tailwindcss": "^4.0.0-alpha.20",
+        "typescript": "^5.5.4",
+        "vite": "5.4.2",
+        "vite-plugin-solid": "^2.10.2"
+    }
 }
