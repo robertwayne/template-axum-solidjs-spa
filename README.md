@@ -14,7 +14,7 @@
 - **[Bun](https://bun.sh/)**
 - **[Vite](https://vitejs.dev/)**
 
-  ## Getting Started
+## Getting Started
 
 - Clone the repository: `git clone https://github.com/robertwayne/template-axum-solidjs-spa`
 
