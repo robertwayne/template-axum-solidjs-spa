@@ -15,14 +15,14 @@
         "tsc:watch": "tsc --noEmit --watch"
     },
     "dependencies": {
-        "@tailwindcss/vite": "^4.0.0-alpha.23",
-        "@solidjs/router": "^0.14.3",
-        "@types/bun": "^1.1.8",
+        "@tailwindcss/vite": "^4.0.0-alpha.24",
+        "@solidjs/router": "^0.14.5",
+        "@types/bun": "^1.1.9",
         "prettier": "^3.3.3",
         "solid-js": "^1.8.22",
-        "tailwindcss": "^4.0.0-alpha.23",
+        "tailwindcss": "^4.0.0-alpha.24",
         "typescript": "^5.5.4",
-        "vite": "5.4.3",
+        "vite": "5.4.6",
         "vite-plugin-solid": "^2.10.2"
     }
 }
