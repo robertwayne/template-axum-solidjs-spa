@@ -15,7 +15,7 @@ serde_json = { version = "1" }
 mimalloc = { version = "0.1", features = ["secure"] }
 sqlx = { version = "0.8", features = ["runtime-tokio-rustls", "postgres"] }
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
-tower-http = { version = "0.5", default-features = false, features = [
+tower-http = { version = "0.6", default-features = false, features = [
     "compression-br",
     "cors",
     "fs",
