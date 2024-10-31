@@ -4,8 +4,8 @@ import { A } from "@solidjs/router"
 import { dataSaver } from "../stores/dataSaver"
 
 /**
- * Wrapper around links that prefetches the route during the next available idle
- * frame.
+ * Wrapper around internal links that prefetches the route during the next
+ * available idle frame.
  */
 const PrefetchLink = ({
     to,
@@ -19,7 +19,6 @@ const PrefetchLink = ({
     children: JSX.Element
 }): JSX.Element => {
     onMount(() => {
-        // Only prefetch if the user is not using the Save-Data header.
         if (!dataSaver) {
             requestIdleCallback(() => {
                 import(`../routes/${file}.tsx`)

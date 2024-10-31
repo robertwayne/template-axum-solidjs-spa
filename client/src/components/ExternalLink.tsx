@@ -1,6 +1,6 @@
 /**
- * Wrapper around an <a> tag leading to an external site. Always opens in a new
- * tab.
+ * Wrapper around an `<a>` tag leading to an external site. Always opens in a
+ * new tab.
  */
 const ExternalLink = ({
     to,
