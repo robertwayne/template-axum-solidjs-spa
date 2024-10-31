@@ -39,6 +39,9 @@
 
 - Sets default Cache-Control headers via a middleware function.
 - Uses tower-http CORS and Compression _(brotli)_ middleware.
+- Uses `mimalloc` instead of the default allocator.
+
+_Remember, this is a template. Make sure you review the code and adjust it to your projects needs._
 
 ## Additional Scripts
 
