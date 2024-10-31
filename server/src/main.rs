@@ -1,5 +1,8 @@
 #![forbid(unsafe_code)]
 
+mod error;
+mod state;
+
 use std::{net::SocketAddr, sync::Arc, time::Duration};
 
 use axum::{
@@ -13,8 +16,10 @@ use axum::{
     routing::get,
     Router,
 };
+use error::AppError;
 use mimalloc::MiMalloc;
 use sqlx::PgPool;
+use state::{AppState, SharedState};
 use tower_http::{
     compression::{predicate::SizeAbove, CompressionLayer},
     cors::CorsLayer,
@@ -22,43 +27,48 @@ use tower_http::{
     trace::TraceLayer,
     CompressionLevel,
 };
-use tracing_subscriber::EnvFilter;
-
-type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
-
-pub type SharedState = Arc<AppState>;
-
-#[derive(Clone)]
-pub struct AppState {
-    _db: PgPool,
-}
+use tracing::Level;
+use tracing_subscriber::{filter, layer::SubscriberExt, util::SubscriberInitExt};
 
 #[global_allocator]
 static GLOBAL: MiMalloc = MiMalloc;
 
 #[tokio::main]
-async fn main() -> Result<()> {
+async fn main() -> Result<(), AppError> {
     dotenvy::dotenv().ok();
 
-    tracing_subscriber::fmt()
-        .compact()
-        .with_env_filter(EnvFilter::from_default_env())
+    let filter = filter::Targets::new()
+        .with_default(Level::INFO)
+        .with_target("tower_http", Level::WARN)
+        .with_target("server", Level::DEBUG)
+        .with_target("sqlx", Level::DEBUG);
+
+    tracing_subscriber::registry()
+        .with(tracing_subscriber::fmt::layer())
+        .with(filter)
         .init();
 
-    let _db =
-        PgPool::connect(&std::env::var("DATABASE_URL").unwrap_or_else(|_| {
-            "postgres://postgres:postgres@localhost:5432/postgres".to_string()
-        }))
-        .await?;
+    let db = {
+        let db_url = std::env::var("DATABASE_URL")
+            .unwrap_or_else(|_| "postgres://postgres:postgres@localhost:5432/postgres".to_string());
 
-    let state = Arc::new(AppState { _db });
-    let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
+        PgPool::connect(&db_url).await?
+    };
+
+    let state = Box::leak(Box::new(Arc::new(AppState::new(db))));
+
+    let addr = {
+        let host = std::env::var("HOST").unwrap_or_else(|_| "127.0.0.1".to_string());
+        let port = std::env::var("PORT").unwrap_or_else(|_| "3000".to_string());
+
+        format!("{}:{}", host, port).parse::<SocketAddr>()?
+    };
 
     let router = Router::new()
-        .nest("/api", api_handler(Arc::clone(&state)))
+        .nest("/api", api_handler(state))
         .merge(static_file_handler());
 
-    tracing::debug!("listening on {}", addr);
+    tracing::info!("listening on {}", addr);
 
     let listener = tokio::net::TcpListener::bind(&addr).await?;
 
@@ -127,11 +137,8 @@ async fn cache_control(request: Request, next: Next) -> Response {
         ];
 
         if CACHEABLE_CONTENT_TYPES.iter().any(|&ct| content_type == ct) {
-            let value = format!("public, max-age={}", 60 * 60 * 24);
-
-            if let Ok(value) = HeaderValue::from_str(&value) {
-                response.headers_mut().insert("cache-control", value);
-            }
+            let value = HeaderValue::from_str("public, max-age=86400").unwrap();
+            response.headers_mut().insert("cache-control", value);
         }
     }
 
