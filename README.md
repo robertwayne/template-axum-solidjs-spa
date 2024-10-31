@@ -22,7 +22,7 @@
 
 - Install your dependencies with `bun i`.
 
-- Build the client with `bun run build` from inside the `/client` directory. _Alternatively, you can use `bun run dev` to run the client with the vite dev server._
+- Build the client with `bun run build` from inside the `/client` directory. _Alternatively, you can use `bun dev` to run the client with the vite dev server._
 
 - Run the server with `cargo run` from inside the `/server` directory.
 
