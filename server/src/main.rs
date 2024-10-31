@@ -55,7 +55,7 @@ async fn main() -> Result<(), AppError> {
         PgPool::connect(&db_url).await?
     };
 
-    let state = Box::leak(Box::new(Arc::new(AppState::new(db))));
+    let state = Arc::new(AppState::new(db));
 
     let addr = {
         let host = std::env::var("HOST").unwrap_or_else(|_| "127.0.0.1".to_string());
@@ -65,7 +65,7 @@ async fn main() -> Result<(), AppError> {
     };
 
     let router = Router::new()
-        .nest("/api", api_handler(state))
+        .nest("/api", api_handler(Arc::clone(&state)))
         .merge(static_file_handler());
 
     tracing::info!("listening on {}", addr);
