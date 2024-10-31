@@ -9,8 +9,6 @@ export default defineConfig({
         outDir: "dist",
         assetsDir: "assets",
         emptyOutDir: true,
-        // Disables asset inlining.
-        assetsInlineLimit: 0,
     },
     css: {
         transformer: "lightningcss",
