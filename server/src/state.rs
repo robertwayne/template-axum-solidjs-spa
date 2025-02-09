@@ -4,13 +4,13 @@ use sqlx::PgPool;
 
 #[derive(Clone)]
 pub struct AppState {
-    pub db: PgPool,
+    pub _db: PgPool,
 }
 
 pub type SharedState = Arc<AppState>;
 
 impl AppState {
     pub fn new(db: PgPool) -> Self {
-        Self { db }
+        Self { _db: db }
     }
 }
