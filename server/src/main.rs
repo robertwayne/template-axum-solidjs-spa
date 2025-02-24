@@ -109,8 +109,7 @@ async fn main() -> Result<(), AppError> {
 
 fn static_file_handler() -> Router {
     Router::new()
-        .nest_service(
-            "/",
+        .fallback_service(
             ServeDir::new("../client/dist")
                 .not_found_service(ServeFile::new("../client/dist/index.html")),
         )
