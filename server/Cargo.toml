@@ -1,7 +1,7 @@
 [package]
 name = "template-axum-solidjs-spa"
 authors = ["Rob Wagner <rob@sombia.com>"]
-license = ""
+license = "MIT-0"
 repository = "https://github.com/robertwayne/template-axum-solidjs-spa"
 version = "0.1.0"
 edition = "2021"
