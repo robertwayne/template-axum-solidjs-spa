@@ -21,7 +21,9 @@ const PrefetchLink = ({
     onMount(() => {
         if (!dataSaver) {
             requestIdleCallback(() => {
-                import(`../routes/${file}.tsx`)
+                import(`../routes/${file}.tsx`).catch((err) =>
+                    console.warn(`Failed to prefetch ${file}:`, err),
+                )
             })
         }
     })

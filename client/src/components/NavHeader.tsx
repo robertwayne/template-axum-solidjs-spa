@@ -13,14 +13,18 @@ const NavHeader = (): JSX.Element => {
     let hamburgerButton: HTMLButtonElement | undefined
     let hamburgerMenu: HTMLDivElement | undefined
 
-    const links = [
+    const routes: Array<{
+        name: string
+        to: string
+        file?: string
+    }> = [
         {
-            to: "/",
             name: "Home",
+            to: "/",
         },
         {
-            to: "/about",
             name: "About",
+            to: "/about",
         },
     ]
 
@@ -73,7 +77,7 @@ const NavHeader = (): JSX.Element => {
                     </div>
 
                     <ul class="flex grow flex-col justify-center gap-8">
-                        {links.map((link) => {
+                        {routes.map((link) => {
                             return (
                                 <li class="ml-4 flex h-fit w-fit">
                                     <PrefetchLink
@@ -95,11 +99,14 @@ const NavHeader = (): JSX.Element => {
     const StandardMenu = (): JSX.Element => {
         return (
             <ul class="hidden h-fit text-xl font-bold lg:flex">
-                {links.map((link) => {
+                {routes.map((route) => {
                     return (
                         <li class="ml-4 flex">
-                            <PrefetchLink to={link.to} file={link.name}>
-                                {link.name}
+                            <PrefetchLink
+                                to={route.to}
+                                file={route.file ?? route.name}
+                            >
+                                {route.name}
                             </PrefetchLink>
                         </li>
                     )
