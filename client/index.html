@@ -15,11 +15,11 @@
 
         <style>
             /* Inline critical CSS to prevent FOUC */
-            [data-theme='light'] {
+            [data-theme="light"] {
                 background-color: #f8f9fa;
                 text: #3f5ab1;
             }
-            [data-theme='dark'] {
+            [data-theme="dark"] {
                 background-color: #222831;
                 text: #272727;
             }
@@ -32,14 +32,19 @@
             if (theme) {
                 document.documentElement.setAttribute("data-theme", theme)
             } else {
-                const prefersLight = window.matchMedia("(prefers-color-scheme: light)")
-                document.documentElement.setAttribute("data-theme", prefersLight.matches ? "light" : "dark")
+                const prefersLight = window.matchMedia(
+                    "(prefers-color-scheme: light)",
+                )
+                document.documentElement.setAttribute(
+                    "data-theme",
+                    prefersLight.matches ? "light" : "dark",
+                )
             }
         </script>
 
         <title>Template: Axum / SolidJS</title>
     </head>
-    
+
     <body>
         <noscript>JavaScript must be enabled to view this website.</noscript>
         <div id="app" />
