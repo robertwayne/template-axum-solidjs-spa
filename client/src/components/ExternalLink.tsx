@@ -14,7 +14,7 @@ const ExternalLink = ({
     return (
         <a
             class={
-                "font-bold hover:text-[var(--highlight)] transition" +
+                "font-bold transition hover:text-[var(--highlight)]" +
                 (underline ? " border-b-2 border-b-[var(--highlight)]" : "")
             }
             href={to}

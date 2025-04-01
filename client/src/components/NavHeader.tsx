@@ -41,7 +41,7 @@ const NavHeader = (): JSX.Element => {
     const HamburgerMenu = (): JSX.Element => {
         return (
             <div ref={hamburgerMenu} class={menuIsOpen() ? "" : "hidden"}>
-                <div class="absolute right-0 top-0 z-10 flex h-full w-full flex-col justify-center bg-primary bg-opacity-60 p-2 text-4xl font-bold backdrop-blur-xl dark:bg-primary dark:bg-opacity-60">
+                <div class="bg-primary bg-opacity-60 dark:bg-primary dark:bg-opacity-60 absolute top-0 right-0 z-10 flex h-full w-full flex-col justify-center p-2 text-4xl font-bold backdrop-blur-xl">
                     <div class="flex items-center justify-between">
                         <button
                             onClick={toggleTheme}
@@ -112,7 +112,7 @@ const NavHeader = (): JSX.Element => {
                     )
                 })}
 
-                <li class="flex justify-center items-center">
+                <li class="flex items-center justify-center">
                     <button onClick={toggleTheme} class="ml-4 flex border-none">
                         <img
                             src={
@@ -131,7 +131,7 @@ const NavHeader = (): JSX.Element => {
     }
 
     return (
-        <header class="flex w-full items-center justify-between p-4 ">
+        <header class="flex w-full items-center justify-between p-4">
             <h1 class="text-3xl font-bold">
                 <A href="/">Template</A>
             </h1>
